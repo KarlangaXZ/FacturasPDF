@@ -105,7 +105,7 @@ doc.setFont('helvetica', 'normal');
 
 // Filas de productos
 productos.forEach((p) => {
-  doc.text(p.nombre, startX, y);
+  doc.text(p.nombre, startX, y, { maxWidth: colWidth[0] - 2 });
   doc.text(p.cantidad.toString(), startX + colWidth[0], y);
   doc.text(`$${p.precio}`, startX + colWidth[0] + colWidth[1], y);
   doc.text(`$${p.subtotal}`, startX + colWidth[0] + colWidth[1] + colWidth[2], y);
