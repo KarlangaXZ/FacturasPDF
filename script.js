@@ -61,7 +61,7 @@ async function generarPDF() {
     const telefono = document.getElementById("telefono").value || "xxx-xxx-xxxx";
 
   const logoUrl = "./logo.png"; // Ruta al logode tu aplicación
-  doc.addImage(logoUrl, "PNG", 10, 10, 30, 30);
+  doc.addImage(logoUrl, "PNG", 10, 10, 40, 40);
   const logo = await fetch(logoUrl)
     .then((res) => res.blob())
     .then(
@@ -73,12 +73,10 @@ async function generarPDF() {
         })
     );
 
-  doc.addImage(logo, 10, 10, 30, 30);
-
   const tipoDocumento = document.getElementById("tipoDocumento").value || "Factura";
   doc.setFontSize(16);
   doc.text(`${tipoDocumento}`, 105, 15, { align: "center" });
-  doc.setFontSize(10);
+  doc.setFontSize(13);
   doc.text(`Fecha: ${fechaStr}`, 200, 10, { align: "right" });
   doc.setFontSize(12);
   doc.text("DELICIAS BEREGÜETE RODRÍGUEZ", 105, 22, { align: "center" });
