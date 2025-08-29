@@ -57,8 +57,8 @@ async function generarPDF() {
   const doc = new jsPDF();
   const fecha = new Date();
   const fechaStr = fecha.toLocaleDateString("es-ES");
-    const cliente = document.getElementById("cliente").value || "N/A";
-    const telefono = document.getElementById("telefono").value || "xxx-xxx-xxxx";
+  const cliente = document.getElementById("cliente").value || "N/A";
+  const telefono = document.getElementById("telefono").value || "xxx-xxx-xxxx";
 
   const logoUrl = "./logo.png"; // Ruta al logode tu aplicación
   doc.addImage(logoUrl, "PNG", 10, 10, 40, 40);
@@ -73,19 +73,31 @@ async function generarPDF() {
         })
     );
 
-  const tipoDocumento = document.getElementById("tipoDocumento").value || "Factura";
+    //hora de en la factura
+    const hora = fecha.toLocaleTimeString("es-ES", {
+      hour: "2-digit",
+      minute: "2-digit",
+      second: "2-digit",
+    });
+
+  const tipoDocumento = document.getElementById("tipoDocumento").value || "FACTURA";
   doc.setFontSize(16);
   doc.text(`${tipoDocumento}`, 105, 15, { align: "center" });
   doc.setFontSize(13);
   doc.text(`Fecha: ${fechaStr}`, 200, 10, { align: "right" });
+  doc.setFontSize(13);
+  doc.text(`Hora: ${hora}`, 200, 15, { align: "right" });
   doc.setFontSize(12);
   doc.text("DELICIAS BEREGÜETE RODRÍGUEZ", 105, 22, { align: "center" });
   doc.setFontSize(10);
-  doc.text("Calle 12 con interior 1, Pueblon 13, CR2 - Tel: 829-375-0265", 105,28,{ align: "center" });
+  doc.text("Calle 12 con interior 1, Pueblon 13 - Tel: 829-375-0265", 105,28,{ align: "center" });
   doc.setFontSize(12);
   doc.text(`Cliente: ${cliente}       Telefono: ${telefono}`, 105, 36, {
     align: "center",
   });
+  doc.setDrawColor(0);
+  doc.setLineWidth(0.5);
+  doc.line(50, 45, 210, 45); // Línea horizontal
 
 let y = 60; // posición inicial en Y
 const startX = 10; // posición inicial en X
