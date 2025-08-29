@@ -108,6 +108,8 @@ productos.forEach((p) => {
   doc.text(`$${p.precio}`, startX + colWidth[0] + colWidth[1], y);
   doc.text(`$${p.subtotal}`, startX + colWidth[0] + colWidth[1] + colWidth[2], y);
   y += 10;
+  doc.text(`\n`, startX, y, { maxWidth: 190 });
+  y += 15;
 });
 // Nota al pie
 doc.setFontSize(10);
