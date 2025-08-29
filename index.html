@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.2/jspdf.plugin.autotable.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Facturas PDF</title>
+  </head>
+  <body class="p-4 bg-gray-100 min-h-screen">
+    <h1 class="text-2xl font-bold text-center mb-6">Facturas PDF</h1>
+
+    
+
+    <!-- Datos del cliente -->
+    <div class="flex flex-col gap-3 mb-6">
+    <label id="forOpcion" for="tipoDocumento" class="border p-2 rounded w-full font-bold">
+        Seleccionar el tipo de documento a Generar:
+        <select id="tipoDocumento" class="border p-2 rounded w-full">
+          <option value="Factura">FACTURA</option>
+          <option value="Cotizacion">COTIZACION</option>
+          </select>
+        </label>
+      <input
+        id="cliente"
+        type="text"
+        placeholder="Cliente"
+        class="border p-2 rounded w-full"
+      />
+
+      <input
+        id="telefono"
+        type="text"
+        placeholder="Teléfono"
+        class="border p-2 rounded w-full"
+      />
+    </div>
+
+    <!-- Formulario de productos -->
+    <div class="flex flex-col md:flex-row gap-3 mb-6">
+      <input
+        id="producto"
+        type="text"
+        placeholder="Producto"
+        class="border p-2 rounded flex-1"
+      />
+      <input
+        id="cantidad"
+        type="number"
+        placeholder="Cantidad"
+        class="border p-2 rounded w-full md:w-28"
+      />
+      <input
+        id="precio"
+        type="number"
+        placeholder="Precio"
+        class="border p-2 rounded w-full md:w-28"
+      />
+
+        <label id="forOpcion" for="metodoPago" class="border p-2 rounded w-full font-bold">
+        Método de pago:
+        <select id="metodoPago" class="border p-2 rounded w-full">
+          <option value="Efectivo">Efectivo</option>
+          <option value="Transferencia bancaria">Transferencia bancaria</option>
+          </select>
+        </label>
+
+      <button
+        onclick="agregarProducto()"
+        class="bg-blue-500 text-white px-4 py-2 rounded font-bold w-full md:w-auto"
+      >
+        Agregar
+      </button>
+      <button
+        onclick="limpiarTabla()"
+        class="bg-red-500 text-white px-4 py-2 rounded font-bold w-full md:w-auto"
+      >
+        Limpiar tabla
+      </button>
+    </div>
+
+    <!-- Tabla de productos -->
+    <div class="overflow-x-auto mb-4">
+      <table class="w-full border bg-white text-sm">
+        <thead>
+          <tr class="bg-gray-200">
+            <th class="border p-2">Producto</th>
+            <th class="border p-2">Cantidad</th>
+            <th class="border p-2">Precio</th>
+            <th class="border p-2">Subtotal</th>
+          </tr>
+        </thead>
+        <tbody id="lista"></tbody>
+      </table>
+    </div>
+
+    <!-- Total -->
+    <p class="text-right font-bold mb-4">
+      Total: $<span id="total">0.00</span>
+    </p>
+
+    <!--Caja de comentario-->
+    <div class="mb-6">
+      <textarea
+        id="comentario"
+        placeholder="Comentario adicional (opcional)"
+        class="border p-2 rounded w-full h-24"
+      ></textarea>
+    <!-- Botón generar -->
+    <button
+      onclick="generarPDF()"
+      class="bg-green-500 text-white px-4 py-3 rounded w-full"
+    >
+      Generar PDF
+    </button>
+
+
+    <script src="./script.js"></script>
+  </body>
+</html>
