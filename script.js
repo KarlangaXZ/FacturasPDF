@@ -75,7 +75,7 @@ async function generarPDF() {
 
   doc.addImage(logo, 10, 10, 30, 30);
 
-    const tipoDocumento = document.getElementById("tipoDocumento").value || "Factura";
+  const tipoDocumento = document.getElementById("tipoDocumento").value || "Factura";
   doc.setFontSize(16);
   doc.text(`${tipoDocumento}`, 105, 15, { align: "center" });
   doc.setFontSize(10);
@@ -138,5 +138,5 @@ doc.text(`Método de pago: ${metodoPago}`, 10, y + 10);
       );
     }
 
-  doc.save("factura.pdf");
+  doc.save(`${tipoDocumento}_${cliente}_${fechaStr}.pdf`);
 }
