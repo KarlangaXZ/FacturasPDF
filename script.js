@@ -57,7 +57,7 @@ async function generarPDF() {
   const doc = new jsPDF();
   const fecha = new Date();
   const fechaStr = fecha.toLocaleDateString("es-ES");
-    const cliente = document.getElementById("cliente").value || "Cliente";
+    const cliente = document.getElementById("cliente").value || "N/A";
     const telefono = document.getElementById("telefono").value || "xxx-xxx-xxxx";
 
   const logoUrl = "./logo.png"; // Ruta al logode tu aplicación
@@ -85,7 +85,7 @@ async function generarPDF() {
   doc.setFontSize(10);
   doc.text("Calle 12 con interior 1, Pueblon 13, CR2 - Tel: 829-375-0265", 105,28,{ align: "center" });
   doc.setFontSize(12);
-  doc.text(`Cliente: ${cliente} -- Telefono: ${telefono}`, 105, 36, {
+  doc.text(`Cliente: ${cliente}       Telefono: ${telefono}`, 105, 36, {
     align: "center",
   });
 
@@ -126,7 +126,7 @@ doc.text(`Método de pago: ${metodoPago}`, 10, y + 10);
     y + 10,
     { align: "right"});
 
-    const comentario = document.getElementById("comentario").value;
+    const comentario = document.getElementById("comentario").value || " ";
     if (comentario) {
       doc.setFontSize(13);
       doc.text(
