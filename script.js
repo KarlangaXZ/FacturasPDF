@@ -126,7 +126,7 @@ doc.text(`Método de pago: ${metodoPago}`, 10, y + 10);
     y + 10,
     { align: "right"});
 
-    const comentario = document.getElementById("comentario").value || " ";
+    const comentario = document.getElementById("comentario").value || "Sin comentarios";
     if (comentario) {
       doc.setFontSize(13);
       doc.text(
