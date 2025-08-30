@@ -80,13 +80,19 @@ async function generarPDF() {
       second: "2-digit",
     });
 
+    // numero de factura aleatorio
+    const numeroFactura = Math.floor(Math.random() * 1000000);
+
+
   const tipoDocumento = document.getElementById("tipoDocumento").value || "FACTURA";
   doc.setFontSize(16);
   doc.text(`${tipoDocumento}`, 105, 15, { align: "center" });
   doc.setFontSize(13);
-  doc.text(`Fecha: ${fechaStr}`, 200, 10, { align: "right" });
+  doc.setFontSize(12);
+  doc.text(`No. Factura: ${numeroFactura}`, 200, 10, { align: "right" });
+  doc.text(`Fecha: ${fechaStr}`, 200, 15, { align: "right" });
   doc.setFontSize(13);
-  doc.text(`Hora: ${hora}`, 200, 15, { align: "right" });
+  doc.text(`Hora: ${hora}`, 200, 20, { align: "right" });
   doc.setFontSize(12);
   doc.text("DELICIAS BEREGÜETE RODRÍGUEZ", 105, 22, { align: "center" });
   doc.setFontSize(10);
