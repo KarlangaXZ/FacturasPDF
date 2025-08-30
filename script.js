@@ -96,7 +96,7 @@ async function generarPDF() {
     align: "center",
   });
   doc.setDrawColor(0);
-  doc.setLineWidth(0.5);
+  doc.setLineWidth(1);
   doc.line(50, 45, 210, 45); // Línea horizontal
 
 let y = 60; // posición inicial en Y
@@ -123,9 +123,10 @@ productos.forEach((p) => {
   doc.text(`\n`, startX, y, { maxWidth: 190 });
   y += 15;
 });
-// Nota al pie
+// Nota al pie de página
 doc.setFontSize(10);
-doc.text(`En DELICIAS BEREGÜETE RODRÍGUEZ, nos dedicamos a ofrecer soluciones para satisfacer las necesidades en cada 
+doc.text(`------------------------------------------------------------------------------------------------------
+  En DELICIAS BEREGÜETE RODRÍGUEZ, nos dedicamos a ofrecer soluciones para satisfacer las necesidades en cada 
 pedido. Contamos con un amplio menu de comida preparadas, con los productos de mayor calidad, todos ellos 
 cuidadosamente seleccionados para brindarte el mejor el mejor sabor.`, 105, y + 20, { align: "center" });
 
