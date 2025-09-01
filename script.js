@@ -139,7 +139,7 @@ doc.setFontSize(10);
 doc.text(`--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
   En DELICIAS BEREGÜETE RODRÍGUEZ, nos dedicamos a ofrecer soluciones para satisfacer las necesidades en cada 
 pedido. Contamos con un amplio menu de comida preparadas, con los productos de mayor calidad, todos ellos 
-cuidadosamente seleccionados para brindarte el mejor el mejor sabor.`, 105, y + 20, { align: "center" });
+cuidadosamente seleccionados para brindarte el mejor el mejor sabor`, 105, y + 20, { align: "center" });
 
 doc.setFontSize(12);
 const metodoPago = document.getElementById("metodoPago").value || "Efectivo";
